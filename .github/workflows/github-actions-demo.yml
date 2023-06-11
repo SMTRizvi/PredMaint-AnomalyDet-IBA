@@ -58,6 +58,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'stmetricdash'
+          app-name: 'PredMaint-AnomalyDet-IBA'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D2A84C248F3D434783A570D0DCB69367 }}
