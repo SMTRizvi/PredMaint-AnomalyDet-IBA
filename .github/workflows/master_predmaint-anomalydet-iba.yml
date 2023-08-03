@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'PredMaint-AnomalyDet-IBA'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BEC4DBE193A84B288C2107DB1A2822D2 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AE9C401584F0438DA1FCC5FA3890790B }}
