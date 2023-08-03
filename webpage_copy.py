@@ -48,21 +48,18 @@ def main():
         csv_file = st.file_uploader("Upload CSV file", type="csv")
         if csv_file is not None:
             df = pd.read_csv(csv_file)
-
-               # Display the loaded data
+                      
             #st.header("Loaded Data:")
             #st.write(df)
+            print("DataFrame displayed successfully!")
 
-                       
-            st.subheader("Loaded Data:")
-            st.write(df)
-            
-            form = st.form(key="process_form")
-            form_submitted = form.form_submit_button("Process")
-            
+           # form = st.form(key="process_form")
+            #form_submitted = form.form_submit_button("Process")
+        
 
-            if form_submitted:
-                    prob, Y_val, ypred, report = processing(df, model_path)
+           # if form_submitted:
+            prob, Y_val, ypred, report = processing(df, model_path)
+            st.write(report)
             #result = processing(df, model_path)
 
                 # Display the result
@@ -72,11 +69,12 @@ def main():
             # Make predictions on the loaded data
             #predictions = model.predict(data)
 
-                    st.subheader("Predictions")
-                    count_of_1 = np.sum(ypred == 1)
-                    count_of_0 = np.sum(ypred == 0)
+            st.subheader("Predictions")
+            count_of_1 = np.sum(ypred == 1)
+            count_of_0 = np.sum(ypred == 0)
 
-
+        else:
+            print("DataFrame loading error!")
             #st.subheader("Predictions:")
             #st.write(result)
             #print (predictions)

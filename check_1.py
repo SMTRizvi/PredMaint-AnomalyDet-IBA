@@ -36,7 +36,7 @@ def multi(x,i):
         return False
     
 
-
+#function preprocesses the data and encodes variables
 def preprocess(X,Y,OHE,low_card,scaler,i,sm):
     x = X.copy()
     y = Y.copy()
@@ -66,7 +66,7 @@ def preprocess(X,Y,OHE,low_card,scaler,i,sm):
     
     return xf, yf
 
-
+#main function calls the raw data, sets it up for processing and passes it to the model, 
 def processing(df, model_path):
   df['date'] = pd.to_datetime(df['date']) 
   df = extra_features(df)

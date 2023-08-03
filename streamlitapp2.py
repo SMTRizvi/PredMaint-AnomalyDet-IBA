@@ -6,7 +6,8 @@ import os
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, roc_auc_score
 from sklearn.metrics import recall_score, f1_score, roc_auc_score, confusion_matrix,classification_report
-
+import shap
+from check_1 import *
 
 # Main Streamlit app code
 def main():
@@ -39,12 +40,12 @@ def main():
         st.write('ROC AUC: ',round(roc_auc_score(Y_val,prob),4))
 
         fig, ax = plt.subplots()
-        ax.bar(["Non-Failures", "Failures"], [count_of_0, count_of_1], label='Predicitions distributions')
+        ax.bar(["Non-Failures", "Failures"], [count_of_0, count_of_1], label='Predictions distributions')
         # ax.bar([0, 1], [0, 1], 'k--')  # Diagonal line
         
         ax.set_xlabel('State')
         ax.set_ylabel('Count')
-        ax.set_title('Predicitions distributions')
+        ax.set_title('Prediction Distribution')
         # ax.legend(loc='lower right')
         st.pyplot(fig)
 
@@ -63,5 +64,18 @@ def main():
         st.pyplot(fig)
         # plt.show()
 
+        df['sector']     = df['device'].str[:4]
+        df['equipment']  = df['device'].str[4:]
+         
+        # count of devices
+        st.subheader("Count of Unique Devices in Analysis")
+        sector_counts = df['sector'].value_counts()
+        equipment_counts = df['equipment'].value_counts()
+        figure, ax = plt.subplots()
+        ax.bar(["equipment"], [len(equipment_counts)], label='')
+        ax.set_xlabel('Devices')
+        ax.set_ylabel('Count')
+        ax.set_title('Prediction Distribution')
+        st.pyplot(figure)
 if __name__ == '__main__':
     main()
