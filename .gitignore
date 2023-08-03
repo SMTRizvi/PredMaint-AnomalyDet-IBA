@@ -1,2 +1,3 @@
 model_lstm.pkl
 testing_file.csv
+__pycache__/
